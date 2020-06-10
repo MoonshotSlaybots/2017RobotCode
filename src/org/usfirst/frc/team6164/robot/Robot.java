@@ -79,20 +79,28 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+		auto = 0;
 	}
 	
 	@Override
 	public void autonomousPeriodic() {
-		Scheduler.getInstance().run();
+	/*	Scheduler.getInstance().run();
 		
 		if (auto<= 150){
-			drive.mecanumDrive_Cartesian(0, 0,.3, 0);	
-//			drive.mecanumDrive_Cartesian(0, .5,0, 0);	
-
+			drive.mecanumDrive_Cartesian(0, -.5, 0, 0);
+		}
+		else{
+			drive.mecanumDrive_Cartesian(0, 0, 0, 0);
+		}
+	*/
+	 //DEMO AUTO
+	 //**********************************************************
+		if (auto<= 150){
+			drive.mecanumDrive_Cartesian(0, 0,.5, 0);	
 			
 		}
 		else if (auto>= 150 && auto<= 300){
-			drive.mecanumDrive_Cartesian(0, 0, -.3, 0);
+			drive.mecanumDrive_Cartesian(0, 0, -.5, 0);
 		}
 		else if(auto>= 300 && auto<= 450){
 			drive.mecanumDrive_Cartesian(0, 0, 0, 0);
@@ -133,7 +141,7 @@ public class Robot extends IterativeRobot {
 				shooter.setSpeed(0);
 			}
 		
-		if(!stick.getRawButton(1)){
+		if(stick.getRawButton(1)){
 			climber.setSpeed(-1);
 			}
 			else{
